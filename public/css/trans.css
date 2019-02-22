@@ -1,0 +1,21 @@
+#trans {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+
+#trans video {
+	position:absolute;
+	top:0;
+	left:0;
+	width:1920px;
+	height:1080px;
+	opacity:0;
+	z-index:9999999;
+}
+
+#trans > video.active {
+	opacity:1;
+}

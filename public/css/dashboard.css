@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css?family=Quattrocento');
+
+* {
+	box-sizing: border-box;
+	font-family: 'Quattrocento', serif;
+	color:#3D3D3D;
+	font-size: 16px;
+	margin:0;
+	transition:all .5s ease;
+}
+
+body {
+	background-color: grey;
+	background-image: url('../images/dashboard-dark-bg.png');
+	padding-bottom:20vh;
+}
+
+#dash-inner {
+	width:1000px;
+	max-width:98%;
+	margin:.5em auto;
+	box-shadow:0px 0px 20px rgba(255,255,255,0.35);
+}
+
+h1 {
+	font-size: 32px;
+	margin-top:24px;
+	margin-bottom:16px;
+}
+
+#masthead {
+	text-align: center;
+}
+
+h1#title {
+	display:inline-block;
+	margin-bottom:32px;
+	color:white;
+	font-size: 24px;
+
+	padding-top:50px;
+	background-image: url('../images/bug-logo.png');
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: 200px auto;
+}
+
+
+.group {
+	background-color: rgba(255,255,255,0.8);
+	border-bottom:4px solid #fbae17;
+	padding-bottom:32px;
+	padding-top:32px;
+
+	background-image: url('../images/dashboard-box-bg.png');
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+
+}
+
+.group:after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+
+.group:first-of-type {
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}
+
+.group:last-of-type {
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	border-bottom:none;
+}
+
+.group h2 {
+	font-size: 16px;
+	margin:0 0 16px 0;
+	text-transform: UPPERCASE;
+}
+
+.group a, .group input {
+	pointer-events: none;
+}
+
+.group.open a, .group.open input {
+	pointer-events: auto;
+}
+
+.group-inner {
+	padding:0 32px 0 32px;
+	max-height: 0;
+	opacity:0;
+	overflow:hidden;
+}
+
+.group.open .group-inner {
+	overflow:visible;
+}
+
+.group-inner:after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+
+.group.open .group-inner {
+	max-height:1500px;
+	opacity:1;
+}
+
+.group h1 {
+	display:block;
+	width:100%;
+	position:relative;
+	margin-top:0;
+	padding:0 32px 0 32px;
+	margin-bottom:0;
+	font-size: 20px;
+	cursor:pointer;
+}
+
+.group.open h1 {
+	margin-bottom:32px;
+}
+
+.group h1:after {
+	position:absolute;
+	display:block;
+	top:0;
+	right:32px;
+	font-size: 27px;
+	line-height: 1em;
+	width:30px;
+	padding:0 0 6px 0;
+	text-align: center;
+	background-color: rgba(0,0,0,0.7);
+	color:white;
+	border-radius: 6px;
+	text-transform: UPPERCASE;
+	opacity:0;
+	content:'+';
+	transition:opacity .3s ease;
+}
+
+.group h1:hover:after {
+	opacity:.125;
+}
+
+.group h1:hover {
+	text-decoration: underline;
+}
+
+.group.open:hover h1:after {
+	content:'-';
+}
+
+h2 {
+	font-size: 24px;
+	margin-bottom:16px;
+	margin-top:12px;
+}
+
+a {
+	margin-bottom:1em;
+}
+
+hr {
+	clear:both;
+	margin:24px 0;
+}
+
+.box {
+	padding:1em;
+	border:1px solid blue;
+	border-top-color:#e0e0e0;
+	border-right-color:#e0e0e0;
+	border-bottom-color:#d3d3d3;
+	border-left-color:#d3d3d3;
+	background-color: rgba(255,255,255,0.6);
+}
+
+.box:after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+a, input[type=submit] {
+	display:block;
+	text-align: center;
+	appearance:none;
+	border:none;
+	background-color:lightgrey;
+	text-decoration: none;
+	color:#3D3D3D;
+	background-color: #fbae17;
+	cursor:pointer;
+	transition:all .15s linear;
+	font-weight: 700;
+	box-shadow:2px 2px 4px rgba(0,0,0,0.1);
+}
+
+a:hover, input[type=submit]:hover {
+	opacity:.65;
+}
+
+form > div {
+	margin-bottom:2%;
+}
+
+a, input[type=submit], input, select, textarea {
+	width:100%;
+	padding:1em;
+	margin-bottom:16px;
+}
+
+input[type=text], textarea, input[type=number] {
+	border:1px solid #d5d5d5;
+	transition-duration: .15s
+}
+
+input[type=text]:focus,
+textarea:focus,
+input[type=number]:focus,
+a:focus,
+input[type=submit]:focus {
+	outline:none;
+	background-color: #ccc;
+}
+
+textarea {
+	min-height: 100px;
+	font-size: 11px;
+}
+
+input[type=color] {
+	height:44px;
+}
+
+input.score {
+	text-align: center;
+}
+
+div.time-input {
+	width:33.33333%;
+	display:inline-block;
+}
+
+label {
+	display:block;
+	clear:both;
+	text-transform: UPPERCASE;
+	font-weight: bold;
+	font-size: 14px;
+	margin-bottom:8px;
+}
+
+	.one-half {
+		width:49%;
+		float:left;
+	}
+
+	.one-half:nth-of-type(odd) {
+		float:left;
+		clear:left;
+	}
+
+	.one-half:nth-of-type(even) {
+		float:right;
+	}
+
+.checkbox {
+
+}
+
+.checkbox input[type="checkbox"] {
+	display:inline-block;
+}
+
+.checkbox label {
+	display:inline-block;
+}
+
+.team input {
+	width:100%;
+	padding:.5em;
+}
+
+.team a {
+	padding:.5em;
+}
+
+.full {
+	width:100%;
+	clear:both;
+}
+
+/* WCPL */
+
+.correct {
+	background-color: green;
+	color:white;
+}
+
+.wrong {
+	background-color: red;
+	color:white;
+}
+
+
+.autocomplete {
+	/*the container must be positioned relative:*/
+	position: relative;
+	display: inline-block;
+	width:100%;
+}
+
+.autocomplete input {
+	margin-bottom:0;
+	width:100%;
+}
+
+.autocomplete-items {
+	position: absolute;
+	border: 1px solid #d4d4d4;
+	border-bottom: none;
+	border-top: none;
+	z-index: 99;
+	/*position the autocomplete items to be the same width as the container:*/
+	top: 100%;
+	left: 0;
+	right: 0;
+}
+.autocomplete-items div {
+	padding: 10px;
+	cursor: pointer;
+	background-color: #fff;
+	border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+	/*when hovering an item:*/
+	background-color: #e9e9e9;
+}
+.autocomplete-active {
+	/*when navigating through the items using the arrow keys:*/
+	background-color: DodgerBlue !important;
+	color: #ffffff;
+}
+
+#words-inautocomplete-list {
+	box-shadow: 0px 0px 60px rgba(0,0,0,0.9);
+}
+
+#next-team {
+	display:block;
+	padding:.5em;
+	text-align: center;
+	cursor:pointer;
+	width:100%;
+	background-color: orange;
+	margin-bottom:1em;
+}

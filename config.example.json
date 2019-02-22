@@ -1,0 +1,21 @@
+{
+	"http_port" : 9000,
+	"http_host" : "localhost",
+
+	"socket_port" : 9001,
+	"socket_host" : "localhost",
+
+	"proxy_socket_port" : 9001,
+	"proxy_socket_host" : "http://localhost",
+
+	"video_directory" : "./public/video/",
+	"images_directory" : "./public/images/",
+
+	"dashboard_user" : "username",
+	"dashboard_password" : "password",
+	"dashboard_secret" : "randomstring",
+
+	"discord_token"  : "discordbottoken",
+	"command_prefix" : "!",
+	"bot_channel" : "discordchannelname"
+}

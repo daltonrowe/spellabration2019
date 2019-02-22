@@ -1,0 +1,116 @@
+html
+	head
+		title= 'Spellabration Streaming Dashboard'
+		script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+		script(src='/scripts/jquery.cookie.js')
+		link(rel='stylesheet' type='text/css' href='/css/dashboard.css')
+		script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+
+	body
+		div#masthead
+			h1#title= 'Spellabration Streaming Dashboard'
+
+		div#dash-inner
+
+			div.group.open
+				h1= 'Global Transition & Background'
+				div.group-inner
+
+					div.one-half.box
+						label= 'Transition'
+						select(name='trans')
+							option(value="rand" selected)= 'random'
+							each key in trans
+								option(value=key)= key
+
+					div.one-half.box
+						label= 'Card Background'
+						select(name='bg')
+							option(value="rand" selected)= 'random'
+							each key in background
+								option(value=key)= key
+
+			div.group.open
+				h1= 'Word Bank'
+				div.group-inner
+					form.box.overflow(action='/update/word_new' method='POST' id='words')
+						select(name='word_logo')
+							each key in square
+								option(value=key)= key
+						span#next-team(href="#")= 'Next Team'
+						div.autocomplete
+							input(id='words-in' type='text' name='text' value='')
+						input(type='submit' value='Show Word')
+						div.one-half
+							a.wrong( href='#' data-action='/update/word_wrong')= 'Wrong'
+						div.one-half
+							a.correct( href='#' data-action='/update/word_correct')= 'Correct'
+					form.box(action='/update/sa' method='POST' id='spell-again')
+						input(type='hidden' name='trans' value='spell-again')
+						input(type='submit' value='Spell Again!')
+
+			div.group
+				h1= 'Overlay Cards'
+				div.group-inner
+					a(href='#' data-action='/update/card_hide' data-extends='trans')= 'Hide All Cards'
+					form.box(action='/update/card_text' method='POST' id='cards' data-extends='trans,bg')
+						h2= 'Text Card'
+						input(type='text' name='text' value='Be Right Back')
+						textarea(name='more_text')= 'Warren County Public Library Spellabration will return shortly.'
+						input(type='submit' value='Show Text Card')
+					form.box(action='/update/card_text' method='POST' data-extends='trans,bg')
+						input(type='hidden' name='text' value='Be Right Back')
+						input(type='hidden' name='more_text' value='Warren County Public Library Spellabration will return shortly.')
+						input(type='submit' value='Be Right Back')
+					div.box
+						a(href='#' data-action='/update/card_sponsors' data-extends='trans,bg')= 'Show Sponsors'
+					form.box(action='/update/card_text' method='POST' data-extends='trans,bg')
+						input(type='hidden' name='text' value='Warrenpl.org')
+						input(type='hidden' name='more_text' value='Spellabration is fundraiser for Warren County Public Library, many thanks to all the sponsors and participants. Find out more on how to support the library at warrenpl.org/contact/support-wcpl/')
+						input(type='submit' value='Show WCPL Plug')
+					form.box(action='/update/card_text' method='POST' data-extends='trans,bg')
+						input(type='hidden' name='text' value='Broadcast Notice')
+						input(type='hidden' name='more_text' value='Rebroadcast of this stream is not permitted. Sponsorship is not an endorsement of products or services.')
+						input(type='submit' value='Show Broadcast Notice')
+					form.box(action='/update/card_text' method='POST' data-extends='trans,bg')
+						input(type='hidden' name='text' value='Yellowberri Live Streaming')
+						input(type='hidden' name='more_text' value='This stream is designed by Yellowberri Creative Studio. For more information on live streaming events, email info@yellowberri.com')
+						input(type='submit' value='Show YB Plug')
+
+
+			div.group
+				h1= 'Bug / Countdown'
+				div.group-inner
+					a(href='#' data-action='/update/bug_hide')= 'Show / Hide'
+					a(href='#' data-action='/update/bug_embiggen')= 'Embiggen / Shrink'
+					div.box
+						h2= 'Logo Bug'
+						a(href='#' data-action='/update/bug_logo')= 'Show Bug Logo'
+					form.box(action='/update/countdown' method='POST' id='bug')
+						h2= 'Countdown'
+						div.time-input
+							label= 'Hours'
+							input(type='number' name='hours' value='0' step='1')
+						div.time-input
+							label= 'Minutes'
+							input(type='number' name='minutes' value='05' step='1')
+						div.time-input
+							label= 'Seconds'
+							input(type='number' name='seconds' value='00' step='1')
+						input(type='submit' value='Start Countdown')
+						a(href='#' data-action='/update/bug_countdown')= 'Show Countdown Bug'
+					form.box(action='/update/bug_text' method='POST' id='bug')
+						h2= 'Bug Text'
+						input(type='text' name='text' value='warrenpl.org')
+						input(type='submit' value='Show Bug Text')
+
+			div.group
+				h1= 'Utilities'
+				div.group-inner
+					a(href='#' data-action='/update/refresh')= 'Reload Connected Overlays'
+
+		script.
+			var secret = '#{secret}';
+			var words = JSON.parse('!{words}');
+			console.log(words);
+		script(src='/scripts/dashboard.js')

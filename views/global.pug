@@ -1,0 +1,12 @@
+html
+
+	head
+		title= 'YB Gaming Overlay'
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js')
+		script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+		script(src='/scripts/anime.min.js')
+		link(rel='stylesheet' type='text/css' href='/css/overlay-global.css')
+		script.
+			var socket = io.connect('#{socket_host}:#{socket_port}');
+
+	body

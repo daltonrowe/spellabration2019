@@ -1,0 +1,65 @@
+include global.pug
+
+style
+	include ../public/css/overlay.css
+
+style
+	include ../public/css/trans.css
+
+div#viewport
+
+	div#trans
+		each key in trans
+				video(width='1280' height='720' preload='none' nocontrols class=key)
+					source(src='/video/trans-' + key + '.webm' type='video/webm')
+
+	div#teams
+		each val in [1, 2, 3, 4, 5, 6, 7, 8]
+			div(class='team team' + val)
+				img(class='team_logo team' + val + '_logo')
+				div.team_inner
+					span(class='team_name team' + val + '_name')
+					div.sa_inner
+						span(class='team_sa team' + val + '_sa')
+
+	div#bug
+		div#bug-inner
+			div#bug-logo.active
+			div#bug-text
+				span.bug_text= 'warrenpl.org'
+			div#bug-countdown
+				span#hours.time
+				span= ':'
+				span#minutes.time
+				span= ':'
+				span#seconds.time
+		div#bug-bg
+			div#bug-bg2
+			div#bug-bg1
+		div#bug-meter
+			div#meter1
+			div#meter2
+
+	div#cards
+		div#card-text
+			span.card-text= 'WCPL Spellabration'
+			span.more-text= 'Friday, Feb 23 2018'
+
+		div#card-sponsors
+			span.sponsor-text= 'Spellabration Sponsored By: '
+			each key in sponsor
+				img.sponsor(src='/images/sponsor-' + key + '.png')
+
+		div#card-bg
+			each key in background
+				video(class=key width='1920' height='1080' preload='none' loop nocontrols)
+					source(src='/video/bg-' + key + '.webm' type='video/webm')
+
+	div#word-wrapper.hide
+		div#team-logo= '0'
+		div#word-inner
+			span#word= 'WCPL'
+
+script(src='/scripts/overlay.js')
+script(src='/scripts/trans.js')
+

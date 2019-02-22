@@ -1,0 +1,13 @@
+include global.pug
+
+style
+	include ../public/css/trans.css
+
+div#viewport
+
+	div#trans
+		each key in trans
+				video(width='1280' height='720' preload='none' nocontrols class=key)
+					source(src='/video/trans-' + key + '.webm' type='video/webm')
+
+script(src='/scripts/trans.js')
