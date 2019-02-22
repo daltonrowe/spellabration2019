@@ -2,6 +2,7 @@
 /public/images/
 /public/video/
 /public/trans/
+/packaged/
 /assets/
 config.json
 config.server.json
